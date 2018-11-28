@@ -1,0 +1,46 @@
+#include "Game.h"
+#include "Player.h"
+#include "Card.h"
+
+int main() {
+
+	//Create new game
+	Game newGame;
+	
+	//Sets names and finalScore (desired cap score), which are obtained from user
+	newGame.setNames(name1,name2,name3,name4);
+
+	int setScore = -1;
+	while(setScore = -1) {	
+		//Keep inputting finalScore
+		setScore = newGame.setFinalScore(finalScore);
+	}
+	
+	//Game flow. playedCard is what needs to be obtained from user. The functions getStarter/getCurrentPlayer 
+	//can be used to help the front end know whose turn it is and who needs to be playing the card. Also, there's
+	//a function in the Game class that returns the cards in a players hand as a vector of Card objects. 
+	//(hand = newGame.getPlayerHand(OrderOfDesiredPlayer). Players are ordered 0-3 (easier for indexing purposes)
+	
+	while(!newGame.isGameOver()) {
+		newGame.shuffleDeal();
+
+		while(!newGame.isEndOfRound()) {
+			int starter = newGame.getStarter();
+			while(!newGame.isEndOfTrick()) {
+				bool validCard = newGame.cardPlayed(playedCard);
+					while (!validCard)
+						//Keep inputting Cards
+						validCard = newGame.cardPlayed(playedCard);
+				int currentPlayer=newGame.getCurrentPlayer();
+			}
+			newGame.endOfTrick();
+		}
+		newGame.endofRound();
+	}
+	int * Scores = newGame.getScores();
+	int winner = newGame.getWinner();
+	
+	return 0;
+}
+
+
