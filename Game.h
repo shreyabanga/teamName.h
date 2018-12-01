@@ -26,6 +26,7 @@ class Game {
         Game(); //Constructor: creates players and creates a playedDeck vector full of filler cards
         void setNames(std::string &name1, std::string &name2, std::string &name3, std::string &name4);
                 //Sets the players' names
+	std::string getName(int player) const; //Returns name of player
         bool setFinalScore(int finalScore); //Sets the desired score cap (called finalScore). Returns false if 
 					   //negative/zero (invalid) number. Returns true otherwise.
         void shuffleDeal(); //Creates, shuffles, and deals the main deck. Finds who has the 2 of
@@ -45,10 +46,10 @@ class Game {
         bool isGameOver() const; //Returns true if a player has a score greater than the desired cap score
         int getStarter() const; //Returns the starter player
         int getCurrentPlayer() const; //Returns the player whose turn it is
-        int * getScores() const; //Returns an array of the scores, with the indices matching the players' orders
-        int getWinner() const; //Returns the winner
-        std::vector<Card> getPlayerHand(int player) const; //Returns current hand of desired player
-	std::vector<Card> getPlayedDeck() const; //Returns played cards in current trick
+  	int * getPlayerHand(int player) const; //Returns current hand of desired player (0-3) in integer representation
+	int * getPlayedDeck() const; //Returns played cards in integer representation
+	int getHandSize(int player) const; //Returns size of player's hand
+	int getPlayedDeckSize() const; //Returns size of playedDeck
 	
 };
 
