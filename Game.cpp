@@ -38,6 +38,29 @@ void Game::setNames(std::string &name, std::string &name1, std::string &name2, s
     Player3.setName(name3);
 }
 
+std::string Game::getName(int player) const {
+    std::string name;
+    switch(player) {
+        case 0: {
+            name = Player0.getName();
+            break;
+        }
+        case 1: {
+            name = Player1.getName();
+            break;
+        }
+        case 2: {
+            name = Player2.getName();
+            break;
+        }
+        default: {
+            name = Player2.getName();
+            break;
+        }
+    }
+    return name;
+}
+
 bool Game::setFinalScore(int finalScore) {
     //Sets the desired score cap
     if (finalScore <= 0)
@@ -252,22 +275,26 @@ void Game::endOfTrick() {
     char origSuit;
     char highestValue;
     switch(starter) {
-        case 0:
+        case 0: {
             origSuit=playedDeck[0].getSuit();
             highestValue=playedDeck[0].getValue();
             break;
-        case 1:
+	}	
+        case 1: {
             origSuit=playedDeck[1].getSuit();
             highestValue=playedDeck[1].getValue();
             break;
-        case 2:
+	}	
+        case 2: {
             origSuit=playedDeck[2].getSuit();
             highestValue=playedDeck[2].getValue();
             break;
-        default:
+	}	
+        default: {
             origSuit=playedDeck[3].getSuit();
             highestValue=playedDeck[3].getValue();
             break;
+	}	
     }
 
     //Finds the highest card played in the initial suit and sets the starter to the player that
@@ -418,28 +445,223 @@ int Game::getWinner() const {
             lowestScore = scores[i];
         }
     }
-    delete scores;
+    delete[] scores;
     return winner;
 }
 
-std::vector<Card> Game::getPlayerHand(int player) const {
-    //Returns current hand of desired player
+int * Game::getPlayerHand(int player) const {
+    //Returns current hand of desired player (0-3) in integer representation
     std::vector<Card> hand;
-    switch(player) {
-        case 0:
+    switch (player) {
+        case 0: {
             hand = Player0.getHand();
-        case 1:
+            break;
+        }
+        case 1: {
             hand = Player1.getHand();
-        case 2:
+            break;
+        }
+        case 2: {
             hand = Player2.getHand();
-        default:
+            break;
+        }
+        default: {
             hand = Player3.getHand();
+            break;
+        }
     }
-    return hand;
+    int *newhand = new int[hand.size()];
+    for (int i = 0; i < hand.size(); i++) {
+        int card;
+        char suit = hand[i].getSuit();
+        char value = hand[i].getValue();
+        switch (suit) {
+            case 'C': {
+                card = 100;
+                break;
+            }
+            case 'D': {
+                card = 200;
+                break;
+            }
+            case 'H': {
+                card = 300;
+                break;
+            }
+            default: {
+                card = 400;
+                break;
+            }
+        }
+        switch (value) {
+            case '2': {
+                card += 2;
+                break;
+            }
+            case '3': {
+                card += 3;
+                break;
+            }
+            case '4': {
+                card += 4;
+                break;
+            }
+            case '5': {
+                card += 5;
+                break;
+            }
+            case '6': {
+                card += 6;
+                break;
+            }
+            case '7': {
+                card += 7;
+                break;
+            }
+            case '8': {
+                card += 8;
+                break;
+            }
+            case '9': {
+                card += 9;
+                break;
+            }
+            case 'T': {
+                card += 10;
+                break;
+            }
+            case 'J': {
+                card += 11;
+                break;
+            }
+            case 'Q': {
+                card += 12;
+                break;
+            }
+            case 'K': {
+                card += 13;
+                break;
+            }
+            default: {
+                card += 14;
+                break;
+            }
+        }
+        newhand[i] = card;
+    }
+    return newhand;
 }
 
 
-std::vector<Card> Game::getPlayedDeck() const {
+int * Game::getPlayedDeck() const {
+    //Returns played deck in integer representation
+    int *newPlayedDeck = new int[playedDeck.size()];
+    for (int i = 0; i < playedDeck.size(); i++) {
+        int card;
+        char suit = playedDeck[i].getSuit();
+        char value = playedDeck[i].getValue();
+        switch (suit) {
+            case 'C': {
+                card = 100;
+                break;
+            }
+            case 'D': {
+                card = 200;
+                break;
+            }
+            case 'H': {
+                card = 300;
+                break;
+            }
+            default: {
+                card = 400;
+                break;
+            }
+        }
+        switch (value) {
+            case '2': {
+                card += 2;
+                break;
+            }
+            case '3': {
+                card += 3;
+                break;
+            }
+            case '4': {
+                card += 4;
+                break;
+            }
+            case '5': {
+                card += 5;
+                break;
+            }
+            case '6': {
+                card += 6;
+                break;
+            }
+            case '7': {
+                card += 7;
+                break;
+            }
+            case '8': {
+                card += 8;
+                break;
+            }
+            case '9': {
+                card += 9;
+                break;
+            }
+            case 'T': {
+                card += 10;
+                break;
+            }
+            case 'J': {
+                card += 11;
+                break;
+            }
+            case 'Q': {
+                card += 12;
+                break;
+            }
+            case 'K': {
+                card += 13;
+                break;
+            }
+            default: {
+                card += 14;
+                break;
+            }
+        }
+        newPlayedDeck[i] = card;
+    }
+    return newPlayedDeck;
+}
 
-	return playedDeck;
+int Game::getHandSize(int player) const {
+    //Returns size of player's hand
+    std::vector<Card> hand;
+    switch(player) {
+        case 0: {
+            hand = Player0.getHand();
+            break;
+        }
+        case 1: {
+            hand = Player1.getHand();
+            break;
+        }
+        case 2: {
+            hand = Player2.getHand();
+            break;
+        }
+        default: {
+            hand = Player3.getHand();
+            break;
+        }
+    }
+    return hand.size();
+}
+
+int Game::getPlayedDeckSize() const {
+    //Returns size of playedDeck
+    return playedDeck.size();
 }
