@@ -1,5 +1,3 @@
-# teamName.h
-
 # Running the App
 Heartz is an on-the-go app version of the card game Hearts. To run this app, you must extract the folder entitled HeartzWithCards from teamname.h_Source.zip. Then, in Android Studio, open an existing project and select the HeartzWithCards folder. All necessary files will be made available. To run the app in the emulator, click the run button. When asked to select depolyment target, you must select a device with API 28. A lower API level will not allow the app to work properly. For an optimal GUI experience, select the Nexus S API 28, though any device with the necessary API level will work.
 
@@ -18,6 +16,6 @@ According to the rules of hearts, there are many plays that constitute an invali
 Invalid Plays:
 1. Playing any card except the 2 of Spades when starting the first trick of a round/hand
 2. Playing a Hearts card in the first trick
-3. Starting a trick with a Hearts card before Hearts have been broken (i.e. before a hearts card or the Queen of Spades has been played)
+3. Starting a trick with a Hearts card before Hearts have been broken (i.e. before a Hearts card or the Queen of Spades has been played)
 4. Playing a card of a different suit from the lead card of a trick when you are able to play the same suit
 
