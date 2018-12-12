@@ -6,9 +6,11 @@ The title page will be the first to appear. You can select the "RULES" button to
 
 A screen will appear telling you the name of the player that will start the game. This is to allow players a chance to pass the phone to the appropriate player. Tap anywhere on this screen to continue. Next, you will see the first player's cards. Tapping a card will play it. If it is an invalid play, meaning the play is not allowed by the rules of hearts, a snackbar will appear at the bottom of the screen telling you as much. Once a valid card is played, the screen will move back to the passing screen, this time with the name of the next player. Tapping the screen anywhere, once again, takes you to the player's screen. The card just played by the first player will now be displayed at the top of the screen. Play will continue in this pattern. When a trick is over, the player who played the card with the highest value in the same suit as the first card played in the trick obtains the cards and starts the next trick. When players run out of cards, points are tallied. If the final score is reached, the game will end and you will see the game over screen, which displays the winner and the scores. If the score hasn't been reached, players receive new cards and the game continues.
 
-From any players' screen, you may press the "SCORES" button in the top right corner to see the current scores. Be aware, points are not tallied until the end of the round, so there will be no points displayed until players play all their cards and a new hand is received.
+From any players' screen, you may press the "SCORES" button in the top right corner to see the current scores. Be aware, points are not tallied until the end of the round, so there will be no points displayed until players play all their cards and a new hand is received. Press return on this screen to return to the current player's screen.
 
 After a game is over, if you choose to play again, you may press the "PLAY AGAIN" button. This will take you back to the inital title  screen.
+
+Do not click through too fast when playing cards as this will overload the app and cause it to crash. Also, never use the device's back button except when returning from the rules page to the main title page.
 
 # Additional Test Cases
 According to the rules of hearts, there are many plays that constitute an invalid play. The following are all error-checked in the app. If you try to play a card that's invalid, a snackbar will appear at the bottom screen informing you that you may not play the card.
